@@ -18,7 +18,7 @@ export default function DeckBuilder({ handleSubmit, deck, setDeck }) {
       >
         Add Card
       </Button>
-      <Sidebar state={showBar} setState={setShowBar} />
+      <Sidebar state={showBar} setState={setShowBar} deck={deck} setDeck={setDeck} />
     </div>
   );
 }

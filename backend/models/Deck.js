@@ -12,8 +12,11 @@ const Schema = mongoose.Schema
 const DeckSchema = new Schema({
   name: String,
   cardList: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Card'
+    id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Card'
+    },
+    number: Number
   }]
 },{timestamps: true});
 

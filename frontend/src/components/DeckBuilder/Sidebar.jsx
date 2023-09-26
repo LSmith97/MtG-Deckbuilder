@@ -3,7 +3,7 @@ import { useState } from "react";
 import { searchCard } from "../../utilities/scryfall-service";
 import { createCard } from "../../utilities/card-serivce";
 
-export default function Sidebar({ state, setState }) {
+export default function Sidebar({ state, setState, deck, setDeck }) {
   const [search, setSearch] = useState("");
   const [searchResults, setResults] = useState(null);
 
@@ -28,7 +28,15 @@ export default function Sidebar({ state, setState }) {
   async function handleSubmit() {
     try {
         const returned = await createCard(searchResults)
-        console.log(returned)
+        setSearch('')
+        setResults(null)
+        const newDeck = {...deck}
+        newDeck.cardList.push({
+            id: returned._id,
+            number: 1,
+            image: returned.imageUrl
+        })
+        setDeck(newDeck)
     } catch (error) {
         console.log(error)
     }
