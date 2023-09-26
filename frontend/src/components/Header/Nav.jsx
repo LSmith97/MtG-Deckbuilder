@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom'
 
 export default function Nav(){
     return(
-        <Stack spacing={1} direction="row" className='div'>
+        <Stack spacing={3} direction="row" className='nav'>
             <Link to="/" >
-                <div className='div-item'>
+                <div className='nav-item'>
                     About
                 </div>
             </Link>
             <Link to="/decks" >
-                <div className='div-item'>
+                <div className='nav-item'>
                     View Decks
                 </div>
             </Link>
             <Link to="/decks/new" >
-                <div className='div-item'>
+                <div className='nav-item'>
                     Deck Builder
                 </div>
             </Link>

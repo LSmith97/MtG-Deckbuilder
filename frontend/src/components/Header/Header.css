@@ -1,0 +1,17 @@
+header {
+    background-color: maroon;
+    color: white;
+}
+
+.nav {
+    background-color: rgb(59, 1, 1);
+    padding: .5rem 10% .5rem 10%;
+}
+
+.nav-item {
+    background-color: maroon;
+    padding: .5rem;
+    border-radius: 1rem;
+    border: 1px solid black;
+    color: white;
+}
