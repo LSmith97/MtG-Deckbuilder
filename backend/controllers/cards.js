@@ -19,9 +19,9 @@ async function create(req, res) {
       // Checks to see if a card already exists in the database.
       // If it does, sends that Card's data
       // Otherwise, Creates a new card and sends that data
-      const foundCard = await Card.exists({ ApiId: cardData.ApiId})
+      const foundCard = await Card.exists({ id: cardData.id})
       if (foundCard) {
-        res.json(await Card.findOne({ ApiId: cardData.ApiId}));
+        res.json(await Card.findOne({ id: cardData.id}));
       } else {
         res.json(await Card.create(cardData));
       }

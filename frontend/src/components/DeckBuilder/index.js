@@ -14,10 +14,11 @@ export default function DeckBuilder({ handleSubmit, deck, setDeck }) {
     <div>
       <Button
         onClick={toggleBar}
+        variant="outlined"
       >
         Add Card
       </Button>
-      <Sidebar state={showBar} />
+      <Sidebar state={showBar} setState={setShowBar} />
     </div>
   );
 }
