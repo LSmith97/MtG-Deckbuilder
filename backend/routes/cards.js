@@ -9,15 +9,7 @@ const router = express.Router()
 // ROUTES
 ////////////////////////////////
 
-//Index
-router.get("/", )
-
-//Show
-
 //Create
 
-//Delete
-
-//Update
 
 module.exports = router

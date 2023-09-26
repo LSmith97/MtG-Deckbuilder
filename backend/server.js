@@ -7,7 +7,7 @@ require("dotenv").config();
 
 
 // start the mongoose db connection
-require('./config/db.connection.js')
+require('./config/db.connection.js');
 
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 const { PORT } = process.env;
@@ -18,13 +18,27 @@ const express = require("express");
 // create application object
 const app = express();
 
+const cors = require("cors")
+const morgan = require("morgan")
+
+//Routers
+const deckRouter = require('./routes/decks');
+
 ///////////////////////////////
-// ROUTES
+// Middleware
 ////////////////////////////////
-// create a test route
-app.get("/", (req, res) => {
-    res.send("hello world");
-});
+
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+app.use(cors());
+app.use(morgan("dev"));
+
+///////////////////////////////
+// Routes
+////////////////////////////////
+
+app.use('/decks', deckRouter)
 
 ///////////////////////////////
 // LISTENER
