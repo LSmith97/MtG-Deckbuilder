@@ -1,6 +1,7 @@
 import { Box, Button, Drawer, Stack } from "@mui/material";
 import { useState } from "react";
 import { searchCard } from "../../utilities/scryfall-service";
+import { createCard } from "../../utilities/card-serivce";
 
 export default function Sidebar({ state, setState }) {
   const [search, setSearch] = useState("");
@@ -15,7 +16,6 @@ export default function Sidebar({ state, setState }) {
   }
 
   async function handleSearch() {
-    setSearch("");
     try {
       const foundCard = await searchCard(search);
       setResults(foundCard);
@@ -25,16 +25,28 @@ export default function Sidebar({ state, setState }) {
     }
   }
 
+  async function handleSubmit() {
+    try {
+        const returned = await createCard(searchResults)
+        console.log(returned)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
   function searched() {
     if (searchResults === "error") {
       return <p>No card found. Change your search and try again.</p>;
     } else if (searchResults) {
       return (
-        <img
-          src={searchResults.image_uris.normal}
-          width="300px"
-          alt={searchResults.name}
-        />
+        <>
+          <img
+            src={searchResults.image_uris.normal}
+            width="300px"
+            alt={searchResults.name}
+          />
+          <Button onClick={handleSubmit} variant="outlined">Add to Deck</Button>
+        </>
       );
     } else {
       return (
@@ -53,11 +65,16 @@ export default function Sidebar({ state, setState }) {
         }}
         className="sidebar"
       >
-        <Stack>
+        <Stack padding="2" direction="row">
           <input type="text" value={search} onChange={handleChange}></input>
-          <Button onClick={handleSearch}>Search</Button>
+
+          <Button onClick={handleSearch} variant="outlined">
+            Search
+          </Button>
         </Stack>
+
         {searched()}
+
       </Box>
     </Drawer>
   );

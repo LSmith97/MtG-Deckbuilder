@@ -16,6 +16,10 @@ module.exports = {
 async function create(req, res) {
     try {
       const cardData = { ...req.body };
+      // Data fixing
+      cardData.imageUrl = cardData.image_uris.normal
+      cardData.type = cardData.type_line
+      cardData.colorIdentity = cardData.color_identity
       // Checks to see if a card already exists in the database.
       // If it does, sends that Card's data
       // Otherwise, Creates a new card and sends that data

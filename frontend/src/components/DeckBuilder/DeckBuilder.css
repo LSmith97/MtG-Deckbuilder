@@ -1,5 +1,12 @@
 .sidebar {
     padding: 1.5rem 3rem 1.5rem 3rem;
+    gap: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar input {
+    width: 25rem;
 }
