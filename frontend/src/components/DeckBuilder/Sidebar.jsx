@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Sidebar({state, setState}){
 
     const [search, setSearch] = useState('')
+    const [searchResults, setResults] = useState([])
 
     function toggleOff(){
         setState(false)
