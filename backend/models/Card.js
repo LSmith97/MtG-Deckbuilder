@@ -26,7 +26,7 @@ const CardSchema = new Schema({
   type: {
     type: String,
   },
-  id: {
+  ApiId: {
     type: String,
     required: true
   }
