@@ -15,16 +15,9 @@ const DeckSchema = new Schema({
     id: {
       type: Schema.Types.ObjectId,
       ref: 'Card',
-      required: true
     },
-    image: {
-      type: String,
-      required: true
-    },
-    number: {
-      type: Number,
-      required: true
-    }
+    image: String,
+    number: Number,
   }]
 },{timestamps: true});
 

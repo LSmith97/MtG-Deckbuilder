@@ -23,9 +23,15 @@ export default function DeckBuilder({ handleSubmit, deck, setDeck }) {
     if (updatedDeck.cardList[index].number > 1) {
       updatedDeck.cardList[index].number--;
     } else {
-        updatedDeck.cardList.splice(index, 1)
+      updatedDeck.cardList.splice(index, 1);
     }
     setDeck(updatedDeck);
+  }
+
+  function handleChange(event) {
+    const updatedDeck = { ...deck }
+    updatedDeck.name = event.target.value
+    setDeck(updatedDeck)
   }
 
   const cardDisplays = deck.cardList.map((item, index) => {
@@ -63,10 +69,41 @@ export default function DeckBuilder({ handleSubmit, deck, setDeck }) {
 
   return (
     <div>
-      <Button onClick={toggleBar} variant="outlined">
-        Add Card
+      <h2>Deck Builder</h2>
+
+      <Stack
+        spacing={1}
+        padding={1}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <label>Deck Name:</label>
+
+        <input value={deck.name} onChange={handleChange} required></input>
+      </Stack>
+
+      <Button
+        onClick={toggleBar}
+        variant="outlined"
+      >
+        Add Cards
       </Button>
-      <div className="card-field">{cardDisplays}</div>
+
+      {deck.cardList.length ? (
+        <>
+        <div className="card-field">{cardDisplays}</div>
+        <Button
+            variant="outlined"
+            onClick={handleSubmit}
+        >
+            Submit Deck
+        </Button>
+        </>
+      ) : (
+        <p>You have no cards! Add some and they'll show up here</p>
+      )}
+
       <Sidebar
         state={showBar}
         setState={setShowBar}
