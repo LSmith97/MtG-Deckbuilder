@@ -10,24 +10,52 @@ export default function DeckBuilder({ handleSubmit, deck, setDeck }) {
     setShowBar(!showBar);
   }
 
-  const cardDisplays = deck.cardList.map((item) => {
+  function tickUp(index) {
+    const updatedDeck = { ...deck };
+    if (updatedDeck.cardList[index].number < 4) {
+      updatedDeck.cardList[index].number++;
+    }
+    setDeck(updatedDeck);
+  }
+
+  function tickDown(index) {
+    const updatedDeck = { ...deck };
+    if (updatedDeck.cardList[index].number > 1) {
+      updatedDeck.cardList[index].number--;
+    } else {
+        updatedDeck.cardList.splice(index, 1)
+    }
+    setDeck(updatedDeck);
+  }
+
+  const cardDisplays = deck.cardList.map((item, index) => {
     return (
       <Paper square={false} elevation={6} className="card-container">
-        <img
-          src={item.image}
-          width="200px"
-          alt={item.id}
-        />
+        <img src={item.image} width="200px" alt={item.id} />
         <Stack
-            spacing={1}
-            padding={1}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
+          spacing={1}
+          padding={1}
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
         >
-            <Button variant="outlined">+</Button>
-            <p>{item.number}</p>
-            <Button variant="outlined">-</Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              tickUp(index);
+            }}
+          >
+            +
+          </Button>
+          <p>{item.number}</p>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              tickDown(index);
+            }}
+          >
+            -
+          </Button>
         </Stack>
       </Paper>
     );
@@ -38,9 +66,7 @@ export default function DeckBuilder({ handleSubmit, deck, setDeck }) {
       <Button onClick={toggleBar} variant="outlined">
         Add Card
       </Button>
-      <div className="card-field">
-        {cardDisplays}
-      </div>
+      <div className="card-field">{cardDisplays}</div>
       <Sidebar
         state={showBar}
         setState={setShowBar}
