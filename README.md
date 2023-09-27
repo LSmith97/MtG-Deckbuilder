@@ -5,6 +5,8 @@ A browser-based deck creator for Magic the Gathering
 
 ## Technologies Used
 
+[Logo by Henry Ryder from Noun Project](https://thenounproject.com/icon/cards-20461/)
+
 ## Getting Started
 
 ### Planning 
