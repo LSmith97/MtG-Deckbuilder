@@ -7,7 +7,9 @@ import "./Show.css";
 export default function Show() {
   const { id } = useParams();
   const [deck, setDeck] = useState(null);
-
+  
+  const navigate = useNavigate()
+  
   useEffect(() => {
     handleRequest();
   }, []);
@@ -18,6 +20,16 @@ export default function Show() {
       setDeck(deckData);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function handleDelete() {
+    try {
+      const deletedResp = await deleteDeck(id);
+      navigate("/decks");
+    } catch (error) {
+      console.log(error);
+      navigate(`/decks/${id}`);
     }
   }
 
@@ -52,7 +64,7 @@ export default function Show() {
         <div className="show-cards">{cardDisplays}</div>
         <Stack spacing={2} padding={2} direction="row" alignItems="center" justifyContent="center">
             <Button variant="outlined">Edit</Button>
-            <Button variant="outlined">Delete</Button>
+            <Button variant="outlined" onClick={handleDelete}>Delete</Button>
         </Stack>
       </>
     );
