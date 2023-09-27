@@ -3,6 +3,7 @@ import About from "../../pages/About";
 import Decks from "../../pages/Decks/";
 import Show from "../../pages/Show/";
 import New from "../../pages/New";
+import Edit from "../../pages/Edit"
 
 export default function Main(){
     return(
@@ -12,6 +13,7 @@ export default function Main(){
                 <Route path="/decks" element={<Decks />} />
                 <Route path="/decks/new" element={<New />} />
                 <Route path="/decks/:id" element={<Show />} />
+                <Route path="/decks/:id/edit" element={<Edit/>}/>
             </Routes>
         </main>
     )
