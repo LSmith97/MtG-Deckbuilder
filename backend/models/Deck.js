@@ -10,7 +10,10 @@ const Schema = mongoose.Schema
 ////////////////////////////////
 
 const DeckSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+  },
   cardList: [{
     id: {
       type: Schema.Types.ObjectId,

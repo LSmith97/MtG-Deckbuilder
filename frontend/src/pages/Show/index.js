@@ -3,13 +3,14 @@ import { useParams, useNavigate } from "react-router";
 import { getDeck, deleteDeck } from "../../utilities/deck-service";
 import { Button, Paper, Stack } from "@mui/material";
 import "./Show.css";
+import { Link } from "react-router-dom";
 
 export default function Show() {
   const { id } = useParams();
   const [deck, setDeck] = useState(null);
   
   const navigate = useNavigate()
-  
+
   useEffect(() => {
     handleRequest();
   }, []);
@@ -63,7 +64,7 @@ export default function Show() {
         <h2>Decklist:</h2>
         <div className="show-cards">{cardDisplays}</div>
         <Stack spacing={2} padding={2} direction="row" alignItems="center" justifyContent="center">
-            <Button variant="outlined">Edit</Button>
+            <Link to={`/decks/${id}/edit`}><Button variant="outlined">Edit</Button></Link>
             <Button variant="outlined" onClick={handleDelete}>Delete</Button>
         </Stack>
       </>
