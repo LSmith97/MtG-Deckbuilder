@@ -1,0 +1,11 @@
+.show-stats {
+  margin: 0 10% 0 10%;
+  background-color: lightgray;
+}
+
+.show-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 2rem 10% 2rem 10%;
+  gap: 2rem;
+}
