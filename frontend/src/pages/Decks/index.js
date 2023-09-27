@@ -2,6 +2,7 @@ import { getDecks } from "../../utilities/deck-service";
 import { useState, useEffect } from "react";
 import { Stack } from "@mui/material";
 import DeckCard from "./DeckCard";
+import "./Decks.css";
 
 export default function Decks() {
   const [deckList, setDeckList] = useState(null);
@@ -25,13 +26,13 @@ export default function Decks() {
 
   function loaded() {
     const deckDisplays = deckList.map((deck) => {
-      return <DeckCard deck={deck}/>;
+      return <DeckCard deck={deck} />;
     });
 
     return (
-      <Stack padding={2} spacing={2}>
+      <div className="all-decks">
         {deckDisplays}
-      </Stack>
+      </div>
     );
   }
 

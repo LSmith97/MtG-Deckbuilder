@@ -1,0 +1,34 @@
+.all-decks {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.deck-card {
+    display: grid;
+    justify-items: stretch;
+    grid-template:
+    "name name" auto
+    "card stats" auto
+    / 2fr 1fr;
+}
+
+.deck-card h3{
+    margin: 0;
+    padding: .5rem;
+    grid-area: name;
+    border-bottom: 3px solid white;
+    background-color: maroon;
+    color: white;
+}
+
+.img-container {
+    padding: 3px;
+    margin: 2rem;
+    place-self: center;
+}
+
+.deck-stats {
+    border-right: 2px solid white;
+}

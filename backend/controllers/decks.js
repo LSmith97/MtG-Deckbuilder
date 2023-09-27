@@ -27,7 +27,7 @@ async function index(req, res, next) {
 
 async function show(req, res) {
   try {
-    foundDeck = await Deck.findById(req.params.id).populate('cardlist').exec();
+    foundDeck = await Deck.findById(req.params.id)
     res.json(foundDeck);
   } catch (error) {
     res.status(400).json(error);
