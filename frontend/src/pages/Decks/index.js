@@ -1,6 +1,7 @@
 import { getDecks } from "../../utilities/deck-service";
 import { useState, useEffect } from "react";
 import { Stack } from "@mui/material";
+import DeckCard from "./DeckCard";
 
 export default function Decks() {
   const [deckList, setDeckList] = useState(null);
@@ -24,7 +25,7 @@ export default function Decks() {
 
   function loaded() {
     const deckDisplays = deckList.map((deck) => {
-      return <p>{deck.name}</p>;
+      return <DeckCard deck={deck}/>;
     });
 
     return (
