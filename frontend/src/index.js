@@ -6,6 +6,7 @@ import App from "./App";
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import Auth0ProviderWithNavigate from "./components/Auth/AuthProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
