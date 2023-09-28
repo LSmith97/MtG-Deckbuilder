@@ -15,11 +15,12 @@ export default function Nav() {
       <Link to="/decks">
         <div className="nav-item">View Decks</div>
       </Link>
-      <Link to="/decks/new">
-        <div className="nav-item">Deck Builder</div>
-      </Link>
+
       {!isLoading && isAuthenticated ? (
         <>
+          <Link to="/decks/new">
+            <div className="nav-item">Deck Builder</div>
+          </Link>
           <Stack
             className="nav-end"
             spacing={1}
@@ -38,7 +39,7 @@ export default function Nav() {
           <LogoutButton />
         </>
       ) : (
-        <LoginButton  className="nav-end"/>
+        <LoginButton className="nav-end" />
       )}
     </Stack>
   );
