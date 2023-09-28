@@ -66,12 +66,15 @@ export default function Show() {
               justifyContent="center"
             >
               <h4>Created By:</h4>
+
               <Avatar
                 alt={deck.owner.nickname}
                 src={deck.owner.picture}
                 sx={{ height: 30, width: 30 }}
               />
-              <h4>{deck.owner.nickname}</h4>
+              <Link to={`/users/${deck.owner._id}`}>
+                <h4>{deck.owner.nickname}</h4>
+              </Link>
             </Stack>
             <h4>Total Cards: {cardNo} </h4>
             <h4>Unique Cards: {deck.cardList.length}</h4>

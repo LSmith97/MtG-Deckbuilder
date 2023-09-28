@@ -1,0 +1,9 @@
+.user-profile {
+    margin: 0 10% 0 10%;
+}
+
+.user-profile h2 {
+    background-color: maroon;
+    color: white;
+    padding: .5rem;
+}
