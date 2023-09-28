@@ -14,7 +14,6 @@ export default function New() {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      setEditDeck({ ...editDeck, owner: user });
       await updateDeck(id, editDeck);
       navigate(`/decks/${id}`);
     } catch (error) {
@@ -40,14 +39,14 @@ export default function New() {
   function loaded() {
     return (
       <>
-        {!isLoading && isAuthenticated ? (
+        {!isLoading && isAuthenticated && user.email === editDeck.owner.email ? (
           <DeckBuilder
             handleSubmit={handleSubmit}
             deck={editDeck}
             setDeck={setEditDeck}
           />
         ) : (
-          <h2>Please Log in to use the deck builder</h2>
+          <h2>You don't have access to edit this deck</h2>
         )}
       </>
     );
