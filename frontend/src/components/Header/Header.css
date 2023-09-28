@@ -8,8 +8,10 @@ header {
 }
 
 .nav {
+    display: flex;
     background-color: rgb(59, 1, 1);
     padding: .5rem 10% .5rem 10%;
+    gap: 1rem;
 }
 
 .nav-item, .nav button{

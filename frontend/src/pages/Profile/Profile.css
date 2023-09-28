@@ -1,8 +1,11 @@
 .user-profile {
     margin: 0 10% 0 10%;
+    display: grid;
+    justify-items: stretch;
 }
 
 .user-profile h2 {
+    margin: 0;
     background-color: maroon;
     color: white;
     padding: .5rem;

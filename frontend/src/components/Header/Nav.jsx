@@ -8,7 +8,7 @@ export default function Nav() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   return (
-    <Stack spacing={3} direction="row" className="nav">
+    <nav className="nav">
       <Link to="/">
         <div className="nav-item">About</div>
       </Link>
@@ -38,8 +38,11 @@ export default function Nav() {
           <LogoutButton />
         </>
       ) : (
-        <LoginButton className="nav-end" />
+        <div className="nav-end" >
+          <LoginButton/>
+        </div>
+        
       )}
-    </Stack>
+    </nav>
   );
 }

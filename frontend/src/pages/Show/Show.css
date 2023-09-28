@@ -1,6 +1,14 @@
 .show-stats {
   margin: 0 10% 0 10%;
-  background-color: lightgray;
+  display: grid;
+  justify-items: stretch;
+}
+
+.show-stats h2 {
+  margin: 0;
+  background-color: maroon;
+  color: white;
+  padding: .5rem;
 }
 
 .show-cards {

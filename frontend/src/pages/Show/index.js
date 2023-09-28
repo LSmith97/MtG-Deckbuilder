@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import { getDeck, deleteDeck } from "../../utilities/deck-service";
-import { Button, Paper, Stack, Avatar } from "@mui/material";
+import { Card, Button, Paper, Stack, Avatar } from "@mui/material";
 import "./Show.css";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -56,30 +56,37 @@ export default function Show() {
     return (
       <>
         <h2>Deck Details</h2>
-        <Paper className="show-stats" elevation={6}>
-          <Stack>
-            <h3>Deck Name: {deck.name}</h3>
-            <Stack
-              spacing={1}
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <h4>Created By:</h4>
+        <Card
+          className="show-stats"
+          elevation={6}
+          sx={{
+            backgroundColor: "lightgrey",
+            borderRadius: "3rem",
+          }}
+        >
+          <h2>{deck.name}</h2>
 
-              <Avatar
-                alt={deck.owner.nickname}
-                src={deck.owner.picture}
-                sx={{ height: 30, width: 30 }}
-              />
-              <Link to={`/users/${deck.owner._id}`}>
-                <h4>{deck.owner.nickname}</h4>
-              </Link>
-            </Stack>
-            <h4>Total Cards: {cardNo} </h4>
-            <h4>Unique Cards: {deck.cardList.length}</h4>
+          <Stack
+            spacing={1}
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <h4>Created By:</h4>
+            <Avatar
+              alt={deck.owner.nickname}
+              src={deck.owner.picture}
+              sx={{ height: 30, width: 30 }}
+            />
+            <Link to={`/users/${deck.owner._id}`}>
+              <h4>{deck.owner.nickname}</h4>
+            </Link>
           </Stack>
-        </Paper>
+
+          <h4>Total Cards: {cardNo} </h4>
+
+          <h4>Unique Cards: {deck.cardList.length}</h4>
+        </Card>
         <h2>Decklist:</h2>
         <div className="show-cards">{cardDisplays}</div>
 
