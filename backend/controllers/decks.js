@@ -3,7 +3,7 @@
 ////////////////////////////////
 
 const express = require("express");
-const { Deck, Card } = require("../models");
+const { Deck, Card, User} = require("../models");
 
 ///////////////////////////////
 // CONTROLLERS
@@ -27,7 +27,9 @@ async function index(req, res, next) {
 
 async function show(req, res) {
   try {
-    foundDeck = await Deck.findById(req.params.id)
+    const foundDeck = await Deck.findById(req.params.id)
+    const user = await User.findById(foundDeck.owner)
+    foundDeck.owner = user
     res.json(foundDeck);
   } catch (error) {
     res.status(400).json(error);
@@ -37,6 +39,11 @@ async function show(req, res) {
 async function create(req, res) {
   try {
     const deckData = { ...req.body };
+    const user = await User.findOne({ name: deckData.owner.name });
+    if (!user) {
+      const user = await User.create(deckData.owner);
+    }
+    deckData.owner = user._id;
     res.json(await Deck.create(deckData));
   } catch (error) {
     res.status(400).json(error);
