@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, Stack } from "@mui/material";
+import { Box, Button, Card, Paper, Drawer, Stack } from "@mui/material";
 import { useState } from "react";
 import { searchCard } from "../../utilities/scryfall-service";
 import { createCard } from "../../utilities/card-serivce";
@@ -27,18 +27,18 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
 
   async function handleSubmit() {
     try {
-        const returned = await createCard(searchResults)
-        setSearch('')
-        setResults(null)
-        const newDeck = {...deck}
-        newDeck.cardList.push({
-            id: returned._id,
-            number: 1,
-            image: returned.imageUrl
-        })
-        setDeck(newDeck)
+      const returned = await createCard(searchResults);
+      setSearch("");
+      setResults(null);
+      const newDeck = { ...deck };
+      newDeck.cardList.push({
+        id: returned._id,
+        number: 1,
+        image: returned.imageUrl,
+      });
+      setDeck(newDeck);
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
   }
 
@@ -46,14 +46,38 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
     if (searchResults === "error") {
       return <p>No card found. Change your search and try again.</p>;
     } else if (searchResults) {
+      const cardResults = searchResults.data.map((card) => {
+        return (
+          <>
+            <h4>{card.name}</h4>
+            <Paper square={false} elevation={6} className="results-card">
+              <img
+                src={
+                  card.image_uris
+                    ? card.image_uris.normal
+                    : "https://i.imgur.com/h34xOBF.png"
+                }
+                width="200px"
+                alt={card.name}
+              />
+            </Paper>
+          </>
+        );
+      });
       return (
         <>
-          <img
-            src={searchResults.image_uris.normal}
-            width="300px"
-            alt={searchResults.name}
-          />
-          <Button onClick={handleSubmit} variant="outlined">Add to Deck</Button>
+          <h2>Results:</h2>
+          <Card
+            square={false}
+            elevation={6}
+            style={{ maxHeight: "50vmin", overflow: "auto" }}
+            className="results-box"
+            sx={{ backgroundColor: "lightgrey" }}
+          >
+            <Stack spacing={2} alignItems="center" justifyContent="center">
+              {cardResults}
+            </Stack>
+          </Card>
         </>
       );
     } else {
@@ -82,7 +106,6 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
         </Stack>
 
         {searched()}
-
       </Box>
     </Drawer>
   );

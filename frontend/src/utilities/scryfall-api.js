@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.scryfall.com/cards/named?fuzzy="
+const BASE_URL = "https://api.scryfall.com/cards/search?q="
 
 export async function search(query) {
     const url = BASE_URL + query;

@@ -28,3 +28,11 @@
 .card-container button {
     font-size: 18px;
 }
+
+.results-card {
+    padding: .5rem;
+}
+
+.results-box {
+    width: 90%;
+}
