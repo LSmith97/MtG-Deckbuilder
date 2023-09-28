@@ -23,7 +23,8 @@ const morgan = require("morgan")
 
 //Routers
 const deckRouter = require('./routes/decks');
-const cardRouter = require('./routes/cards')
+const cardRouter = require('./routes/cards');
+const userRouter = require('./routes/users')
 
 ///////////////////////////////
 // Middleware
@@ -41,6 +42,7 @@ app.use(morgan("dev"));
 
 app.use('/decks', deckRouter)
 app.use('/cards', cardRouter)
+app.use('/users', userRouter)
 
 ///////////////////////////////
 // LISTENER

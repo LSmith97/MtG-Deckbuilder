@@ -28,7 +28,6 @@ export default function Nav() {
             alignItems="center"
             justifyContent="center"
           >
-            <h3>Signed in as:</h3>
             <Avatar
               alt={user.name}
               src={user.picture}
