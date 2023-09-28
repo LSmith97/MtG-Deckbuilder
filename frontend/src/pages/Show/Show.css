@@ -9,6 +9,7 @@
   background-color: maroon;
   color: white;
   padding: .5rem;
+  border-bottom: 3px solid white;
 }
 
 .show-cards {
