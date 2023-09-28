@@ -19,7 +19,7 @@ module.exports = {
 
 async function index(req, res, next) {
   try {
-    res.json(await Deck.find({}));
+    res.json(await Deck.find({}).populate('owner'));
   } catch (error) {
     res.status(400).json(error);
   }
@@ -27,9 +27,7 @@ async function index(req, res, next) {
 
 async function show(req, res) {
   try {
-    const foundDeck = await Deck.findById(req.params.id)
-    const user = await User.findById(foundDeck.owner)
-    foundDeck.owner = user
+    const foundDeck = await Deck.findById(req.params.id).populate('owner')
     res.json(foundDeck);
   } catch (error) {
     res.status(400).json(error);

@@ -1,4 +1,4 @@
-import { Card, Paper, Stack } from "@mui/material";
+import { Card, Paper, Stack, Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function DeckCard({ deck }) {
@@ -17,7 +17,21 @@ export default function DeckCard({ deck }) {
         }}
       >
         <h3>{deck.name}</h3>
-        <Stack spacing={0} className="deck-stats" > 
+        <Stack spacing={0} className="deck-stats">
+          <Stack
+            spacing={1}
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <h4>Created By:</h4>
+            <Avatar
+              alt={deck.owner.name}
+              src={deck.owner.picture}
+              sx={{ height: 30, width: 30 }}
+            />
+            <h4>{deck.owner.name}</h4>
+          </Stack>
           <h4>Total Cards: {cardNo}</h4>
           <h4>Unique Cards: {deck.cardList.length}</h4>
         </Stack>
