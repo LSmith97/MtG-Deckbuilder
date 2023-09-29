@@ -31,8 +31,30 @@
 
 .results-card {
     padding: .5rem;
+    max-width: 215px;
 }
 
 .results-box {
-    width: 90%;
+    width: 100%;
+}
+
+#results-columns {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.selected {
+    width: 100%;
+    text-align: center;
+}
+
+.selected h3 {
+    margin: 1rem 0 0 0;
+    padding: .5rem;
+    background-color: maroon;
+    color: white;
+    
 }

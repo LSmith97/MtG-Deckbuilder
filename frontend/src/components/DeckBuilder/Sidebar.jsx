@@ -6,6 +6,7 @@ import { createCard } from "../../utilities/card-serivce";
 export default function Sidebar({ state, setState, deck, setDeck }) {
   const [search, setSearch] = useState("");
   const [searchResults, setResults] = useState(null);
+  const [selected, setSelected] = useState(null)
 
   function toggleOff() {
     setState(false);
@@ -27,7 +28,7 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
 
   async function handleSubmit() {
     try {
-      const returned = await createCard(searchResults);
+      const returned = await createCard(selected);
       setSearch("");
       setResults(null);
       const newDeck = { ...deck };
@@ -48,9 +49,9 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
     } else if (searchResults) {
       const cardResults = searchResults.data.map((card) => {
         return (
-          <>
+          <div>
             <h4>{card.name}</h4>
-            <Paper square={false} elevation={6} className="results-card">
+            <Paper square={false} elevation={6} className="results-card" onClick={()=>{setSelected(card)}}>
               <img
                 src={
                   card.image_uris
@@ -61,24 +62,29 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
                 alt={card.name}
               />
             </Paper>
-          </>
+          </div>
         );
       });
       return (
-        <>
-          <h2>Results:</h2>
+        <div className="selected">
+          <h3>Results:</h3>
           <Card
             square={false}
             elevation={6}
             style={{ maxHeight: "50vmin", overflow: "auto" }}
             className="results-box"
-            sx={{ backgroundColor: "lightgrey" }}
+            sx={{ backgroundColor: "lightgrey", border: "1px solid grey"}}
           >
-            <Stack spacing={2} alignItems="center" justifyContent="center">
+            <div id="results-columns">
               {cardResults}
-            </Stack>
+            </div>
           </Card>
-        </>
+          <h3>Selected Card:</h3>
+          <p>{selected ? selected.name: "none"}</p>
+          <Button onClick={handleSubmit} variant="outlined">
+            Add to Deck
+          </Button>
+        </div>
       );
     } else {
       return (
