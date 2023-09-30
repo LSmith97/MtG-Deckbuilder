@@ -11,11 +11,11 @@ export default function About(){
             </Paper>
             <Paper elevation={6} className="about-card">
                 <h3>Where can I see my Decks?</h3>
-                <p>To view an existing deck, head to the 'View Decks' page. Here, you can see a lit of all the decks that have been created. To see details on a particular deck, click on the card for the deck you want to view</p>
+                <p>To view an existing deck, head to the 'View Decks' page. Here, you can see a list of all the decks that have been created. To see details on a particular deck, click on the card for the deck you want to view.</p>
             </Paper>
             <Paper elevation={6} className="about-card">
                 <h3>How do I edit or delete existing decks?</h3>
-                <p>To change or remove an existing deck, head to the deck details page for the deck you want to change. There you will find two buttons</p>
+                <p>To change or remove an existing deck, head to the deck details page for the deck you want to change and click on the "edit" and "delete" buttons respectively.</p>
             </Paper>
         </Stack>
     )

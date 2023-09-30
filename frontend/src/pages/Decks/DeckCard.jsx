@@ -13,7 +13,7 @@ export default function DeckCard({ deck }) {
         className="deck-card"
         sx={{
           backgroundColor: "lightgrey",
-          borderRadius: "3rem",
+          borderRadius: "1rem",
         }}
       >
         <h3>{deck.name}</h3>

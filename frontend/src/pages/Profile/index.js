@@ -36,7 +36,7 @@ export default function Profile() {
           elevation={6}
           sx={{
             backgroundColor: "lightgrey",
-            borderRadius: "3rem",
+            borderRadius: "1rem",
           }}
         >
           <h2>{profile.user.nickname}</h2>
