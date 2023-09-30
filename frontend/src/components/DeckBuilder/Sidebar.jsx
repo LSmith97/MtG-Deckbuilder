@@ -30,11 +30,18 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
   }
 
   function filterChange(event) {
-    setSearch({...search, filterParams: {...search.filterParams, [event.target.name]: event.target.value}})
+    setSearch({
+      ...search,
+      filterParams: {
+        ...search.filterParams,
+        [event.target.name]: event.target.value,
+      },
+    });
   }
 
   async function handleSearch() {
     try {
+      setSearch({...search, filter: false})
       const foundCard = await searchCard(search);
       setResults(foundCard);
     } catch (error) {
@@ -132,7 +139,7 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
             onChange={filterChange}
             defaultValue={false}
             inputProps={{
-              name: "color",
+              name: "c",
             }}
           >
             <MenuItem value={false}>Any</MenuItem>
@@ -198,7 +205,7 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
             onChange={filterChange}
             defaultValue={false}
             inputProps={{
-              name: "tough",
+              name: "tou",
             }}
           >
             <MenuItem value={false}>Any</MenuItem>
@@ -212,7 +219,8 @@ export default function Sidebar({ state, setState, deck, setDeck }) {
             <MenuItem value={7}>7</MenuItem>
             <MenuItem value={8}>8</MenuItem>
             <MenuItem value={9}>9</MenuItem>
-            <MenuItem value={10}>10</MenuItem></Select>
+            <MenuItem value={10}>10</MenuItem>
+          </Select>
         </label>
       </Card>
     );
