@@ -42,7 +42,7 @@ Planning trello board can be found here: [link](https://trello.com/invite/b/5Wbr
 
 ## Next Steps
 
--Detail pages for cards featuring decks made using that card
--Deck rating system and tags for decks
--Deck search functionality
--Exporting decks for use on 3rd party card markets such as TCGplayer for easy shopping
+- Detail pages for cards featuring decks made using that card
+- Deck rating system and tags for decks
+- Deck search functionality
+- Exporting decks for use on 3rd party card markets such as TCGplayer for easy shopping
