@@ -17,6 +17,8 @@ A browser-based application that allows you to create an manage decks for Magic 
 - React
 - Material UI react library
 - Scryfall API
+- Render
+- Netlify
 
 [Logo by Henry Ryder from Noun Project](https://thenounproject.com/icon/cards-20461/)
 
